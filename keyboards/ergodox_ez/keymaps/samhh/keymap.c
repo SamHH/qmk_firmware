@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [CODE] = LAYOUT_ergodox(
         __, __, __, __, __, __, __,
-        __, __, __, EQNORM, EQJS, __, __,
+        __, __, __, EQNORM, EQJS, __, KC_TRNS,
         __, HSOAPL, HSOMAP, THNLMB, FATLMB, __,
         __, __, UQHS, UQNORM, UQJS, __, __,
         __, __, __, __, __,
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         __, __, __,
 
         __, __, __, __, __, __, __,
-        __, __, __, __, __, __, __,
+        KC_TRNS, __, __, __, __, __, __,
         __, TD(TD_PAREN), TD(TD_SQBRK), TD(TD_BRACE), TD(TD_NGBRK), __,
         __, __, __, __, __, __, __,
         __, __, __, __, __,
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [MISC] = LAYOUT_ergodox(
         KC_MUTE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
-        KC_VOLU, __, KC_MPRV, KC_MPLY, KC_MNXT, __, __,
+        KC_VOLU, __, KC_MPRV, KC_MPLY, KC_MNXT, __, KC_TRNS,
         KC_VOLD, __, KC_DLR, EUR, GBP, __,
         __, __, __, __, __, __, __,
         RESET, EEP_RST, VRSN, __, __,
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BTN1, __, __,
 
         KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, __,
-        __, __, __, __, __, __, KC_BRIU,
+        KC_TRNS, __, __, __, __, __, KC_BRIU,
         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, __, KC_BRID,
         __, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, __, __,
         __, __, __, __, __,
