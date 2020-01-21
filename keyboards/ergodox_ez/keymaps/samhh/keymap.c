@@ -12,6 +12,7 @@ enum custom_keycodes {
     EPRM = SAFE_RANGE,
     VRSN,
     CTRLW,
+    CTRLD,
     FATLMB,
     THNLMB,
     HSOMAP,
@@ -52,8 +53,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MO(MISC), KC_N, KC_M, TD(TD_CMMHY), KC_DOT, KC_QUES, TD(TD_RSEXC),
         KC_COLN, KC_SCLN, KC_EQL, KC_PLUS, KC_RCTL,
         KC_RALT, KC_RCMD,
-        KC_DEL,
-        KC_TAB, KC_ENT, MO(CODE)
+        CTRLD,
+        KC_TAB, KC_DEL, KC_ENT
     ),
 
     [CODE] = LAYOUT_ergodox(
@@ -108,6 +109,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case CTRLW:
                 SEND_STRING(SS_LCTL("w"));
+                break;
+            case CTRLD:
+                SEND_STRING(SS_LCTL("d"));
                 break;
             case FATLMB:
                 SEND_STRING("=>");
