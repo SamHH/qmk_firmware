@@ -17,41 +17,26 @@ enum custom_keycodes {
     THNLMB,
     HSOMAP,
     HSOAPL,
-    EQNORM,
-    EQJS,
-    UQNORM,
-    UQJS,
-    UQHS,
     GBP,
     EUR
 };
 
-enum {
-    TD_MQUOT,
-    TD_CMMHY,
-    TD_RSEXC,
-    TD_PAREN,
-    TD_SQBRK,
-    TD_BRACE,
-    TD_NGBRK
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_ergodox(
-        KC_AT, KC_1, KC_2, KC_3, KC_4, KC_5, KC_LCMD,
+        __, KC_1, KC_2, KC_3, KC_4, KC_5, __,
         KC_QUES, KC_Q, KC_W, KC_E, KC_R, KC_T, MO(MISC),
         KC_UNDS, KC_A, KC_S, KC_D, KC_F, KC_G,
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, MO(CODE),
-        KC_LCTL, KC_TILD, KC_BSLS, KC_PIPE, KC_ESC,
+        KC_LCTL, __, KC_GRV, KC_BSLS, KC_ESC,
         KC_LCMD, KC_LALT,
         CTRLW,
-        KC_SPC, KC_BSPC, KC_PERC,
+        KC_SPC, KC_BSPC, KC_TAB,
 
-        KC_RCMD, KC_6, KC_7, KC_8, KC_9, KC_0, KC_HASH,
+        __, KC_6, KC_7, KC_8, KC_9, KC_0, __,
         MO(MISC), KC_Y, KC_U, KC_I, KC_O, KC_P, KC_SLSH,
-        KC_H, KC_J, KC_K, KC_L, TD(TD_MQUOT), KC_DLR,
-        MO(CODE), KC_N, KC_M, TD(TD_CMMHY), KC_DOT, KC_QUES, TD(TD_RSEXC),
-        KC_COLN, KC_SCLN, KC_EQL, KC_PLUS, KC_RCTL,
+        KC_H, KC_J, KC_K, KC_L, KC_QUOT, KC_DLR,
+        MO(CODE), KC_N, KC_M, KC_COMM, KC_DOT, KC_MINS, KC_RSFT,
+        KC_COLN, KC_SCLN, KC_EQL, __, KC_RCTL,
         KC_RALT, KC_RCMD,
         CTRLD,
         KC_TAB, KC_DEL, KC_ENT
@@ -59,18 +44,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [CODE] = LAYOUT_ergodox(
         __, __, __, __, __, __, __,
-        __, __, __, EQNORM, EQJS, __, KC_TRNS,
+        __, __, __, __, __, __, __,
         __, HSOAPL, HSOMAP, THNLMB, FATLMB, __,
-        __, __, UQHS, UQNORM, UQJS, __, __,
+        __, __, __, __, __, __, __,
         __, __, __, __, __,
         __, __,
         __,
         __, __, __,
 
         __, __, __, __, __, __, __,
-        KC_TRNS, __, __, __, __, __, __,
-        __, TD(TD_PAREN), TD(TD_SQBRK), TD(TD_BRACE), TD(TD_NGBRK), __,
         __, __, __, __, __, __, __,
+        __, KC_LPRN, KC_LBRC, KC_LCBR, KC_LABK, __, __,
+        __, KC_RPRN, KC_RBRC, KC_RCBR, KC_RABK, __,
         __, __, __, __, __,
         __, __,
         __,
@@ -79,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [MISC] = LAYOUT_ergodox(
         KC_MUTE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
-        KC_VOLU, __, KC_MPRV, KC_MPLY, KC_MNXT, __, KC_TRNS,
+        KC_VOLU, __, KC_MPRV, KC_MPLY, KC_MNXT, __, __,
         KC_VOLD, __, KC_DLR, EUR, GBP, __,
         __, __, __, __, __, __, __,
         RESET, EEP_RST, VRSN, __, __,
@@ -88,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BTN1, __, __,
 
         KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, __,
-        KC_TRNS, __, __, __, __, __, KC_BRIU,
+        __, __, __, __, __, __, KC_BRIU,
         KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, __, KC_BRID,
         __, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, __, __,
         __, __, __, __, __,
@@ -125,21 +110,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case HSOAPL:
                 SEND_STRING("<*>");
                 break;
-            case EQNORM:
-                SEND_STRING("==");
-                break;
-            case EQJS:
-                SEND_STRING("===");
-                break;
-            case UQNORM:
-                SEND_STRING("!=");
-                break;
-            case UQJS:
-                SEND_STRING("!==");
-                break;
-            case UQHS:
-                SEND_STRING("/=");
-                break;
             case GBP:
                 SEND_STRING("£");
                 break;
@@ -150,16 +120,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     return true;
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_MQUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_GRV),
-    [TD_CMMHY] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_MINS),
-    [TD_RSEXC] = ACTION_TAP_DANCE_DOUBLE(KC_RSFT, KC_EXLM),
-    [TD_PAREN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
-    [TD_SQBRK] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
-    [TD_BRACE] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
-    [TD_NGBRK] = ACTION_TAP_DANCE_DOUBLE(KC_LABK, KC_RABK)
 };
 
 // Ergodox EZ LEDs:
