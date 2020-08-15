@@ -11,8 +11,6 @@
 enum custom_keycodes {
     EPRM = SAFE_RANGE,
     VRSN,
-    CTRLW,
-    CTRLD,
     FATLMB,
     THNLMB,
     HSOMAP,
@@ -29,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, MO(CODE),
         KC_LCTL, __, KC_GRV, KC_BSLS, KC_ESC,
         KC_LCMD, KC_LALT,
-        CTRLW,
+        __,
         KC_SPC, KC_BSPC, KC_TAB,
 
         __, KC_6, KC_7, KC_8, KC_9, KC_0, __,
@@ -38,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MO(CODE), KC_N, KC_M, KC_COMM, KC_DOT, KC_MINS, KC_RSFT,
         KC_COLN, KC_SCLN, KC_EQL, __, KC_RCTL,
         KC_RALT, KC_RCMD,
-        CTRLD,
+        __,
         KC_TAB, KC_DEL, KC_ENT
     ),
 
@@ -92,12 +90,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case VRSN:
                 SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
                 return false;
-            case CTRLW:
-                SEND_STRING(SS_LCTL("w"));
-                break;
-            case CTRLD:
-                SEND_STRING(SS_LCTL("d"));
-                break;
             case FATLMB:
                 SEND_STRING("=>");
                 break;
