@@ -1,6 +1,16 @@
-## Layers
+# Usage
 
-### Base
+I'll probably forget this if I don't leave it here:
+
+```
+qmk flash -kb ergodox_ez -km samhh
+```
+
+It'll automatically use the Teensy bootloader (if installed, anyway). Hit the reset key and away it'll go!
+
+# Layers
+
+## Base
 
 ```
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -23,7 +33,7 @@
  *                                 `--------------------'       `--------------------'
 ```
 
-### Code
+## Code
 
 ```
  *
