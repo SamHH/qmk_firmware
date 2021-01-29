@@ -15,8 +15,6 @@ enum custom_keycodes {
     THNLMB,
     HSOMAP,
     HSOAPL,
-    GBP,
-    EUR
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -63,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MISC] = LAYOUT_ergodox(
         KC_MUTE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
         KC_VOLU, __, KC_MPRV, KC_MPLY, KC_MNXT, __, __,
-        KC_VOLD, __, KC_DLR, EUR, GBP, __,
+        KC_VOLD, __, __, __, __, __,
         __, __, __, __, __, __, __,
         RESET, EEP_RST, VRSN, __, __,
         __, __,
@@ -101,12 +99,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case HSOAPL:
                 SEND_STRING("<*>");
-                break;
-            case GBP:
-                SEND_STRING("£");
-                break;
-            case EUR:
-                SEND_STRING("€");
                 break;
         }
     }
